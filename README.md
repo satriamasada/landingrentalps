@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# LevelUp PS - PlayStation Rental Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LevelUp PS adalah sebuah *landing page* modern, responsif, dan elegan yang dirancang khusus untuk bisnis penyewaan (rental) PlayStation5 dan PlayStation 4. Proyek ini memfokuskan antarmuka pengguna pada kenyamanan, stabilitas tampilan (*minimalist plain layout* tanpa efek berat), serta sistem pemesanan langsung (terintegrasi dengan pesan WhatsApp).
 
-## Available Scripts
+## 🚀 Fitur Utama
+- **Modern & Elegan**: Menggunakan warna palet *dark-slate/blue* dengan desain kartikal (card-based) modern dan efek mengambang (float & fade up) yang ringan.
+- **Daftar Paket Sewa Dinamis**: Mendukung pemisahan kategori harga untuk PlayStation 5 dan PlayStation 4, termasuk dukungan label khusus seperti Paket Harian (24 jam).
+- **Game Library List**: Katalog game terbaru ditampilkan menggunakan desain antarmuka *Horizontal Card Scroll* (Carousel List), cocok untuk layar sentuh pada perangkat *mobile* maupun desktop.
+- **Langsung ke WhatsApp**: Form *Booking* interaktif pada *popup/modal* dengan pengisian nama, pilihan konsol, daftar paket, catatan khusus, dan alamat, lalu mengirimkan format pesanan rapi secara otomatis ke nomor WhatsApp pemilik bisnis.
+- **Stabilitas Layout Tinggi**: Didesain di dalam wadah resolusi terkunci (maksimal lebar 1000px) untuk membasmi sepenuhnya _bug horizontal scroll_ atau elemen bergeser acak pada *device* layar lelebar maupun kecil.
 
-In the project directory, you can run:
+## 🛠️ Tech Stack
+- **Framework Utama**: [React.js](https://reactjs.org/) (Create React App as base / Vite compatibility depending on setup environment).
+- **Styling**: Native CSS (`index.css`) -- menghindari ketergantungan kompleks dari *framework* CSS dan menjaga performa sekencang mungkin tanpa *overhead* ukuran bundel.
+- **Icon Assets**: [Lucide React](https://lucide.dev/) (segar, jernih, dan ringan).
 
-### `npm start`
+## 📂 Struktur Proyek
+Root direktori untuk aset penting bisa ditemukan di folder `src/`:
+```text
+src/
+├── components/          # Komponen React utama
+│   ├── Navbar.js        # Navigasi atas yang statis dan bersih
+│   ├── Hero.js          # Hero Section interaktif dengan animasi elemen
+│   ├── Packages.js      # Tabel/Daftar Harga (PS5 & PS4 picker tab)
+│   ├── GameSelector.js  # Tampilan carousel katalog game populer
+│   ├── PaymentInfo.js   # Kartu rekening dan panduan pemesanan sederhana
+│   └── Footer.js        # Area jejak kaki halaman paling bawah
+├── App.js               # Root komponen + Integrasi Form Modal Booking WA
+├── index.css            # Satu-satunya file desain style dengan utility classes khusus
+└── index.js             # Entry Point proyek React
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Cara Menjalankan Secara Lokal
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) sebelum memulai instruksi di bawah ini:
 
-### `npm test`
+1. Buka terminal di direktori utama `myapp-rentalps`.
+2. Lakukan instalasi ketergantungan program (pastikan dependencies komplit):
+   ```bash
+   npm install
+   ```
+3. Jalankan *development server*:
+   ```bash
+   npm start
+   ```
+4. Buka [http://localhost:3000](http://localhost:3000) pada peramban Anda. Aplikasi akan me-*reload* otomatis setiap kali Anda melakukan perubahan kode (*hot-reloading*).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📞 Integrasi Pemesanan (WhatsApp)
+Data pemesanan akan disambungkan ke konfigurasi API URL WhatsApp. Anda cukup mencari parameter referensi nomor HP di `App.js` di dalam fungsi `handleBooking`:
+```javascript
+window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+```
+*Ganti `6281234567890` dengan nomor seluler admin operasional Anda yang valid tanpa tambahan angka nol atau tanda `+` di awal.*
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Dibuat menggunakan spesifikasi arsitektur bersih dan responsif tinggi. (Build by Google AI / Antigravity Agent)*
