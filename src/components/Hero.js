@@ -1,5 +1,6 @@
 import React from 'react';
 import { Play } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero = ({ onBookingClick }) => {
   return (
@@ -8,22 +9,37 @@ const Hero = ({ onBookingClick }) => {
         <div className="grid md:grid-cols-2 gap-8 items-center border-b border-[var(--border)] pb-20">
           <div>
             <h1 className="animate-fade-up" style={{ fontSize: '3.5rem', marginBottom: '1.5rem', opacity: 0 }}>
-              Rental PS Tanpa <span className="text-primary">Ribet.</span>
+              Rental PS{' '}
+              <span className="text-primary">
+                <TypeAnimation
+                  sequence={[
+                    'Tanpa Ribet.',
+                    2000,
+                    'Dihantar Cepat.',
+                    2000,
+                    'Koleksi Lengkap.',
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
+              </span>
             </h1>
             <p className="text-muted animate-fade-up delay-100" style={{ fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '480px', opacity: 0 }}>
               Nikmati sensasi gaming dengan koleksi game PS5 & PS4 terlengkap. Antar jemput unit langsung ke rumah Anda.
             </p>
 
             <div className="flex gap-4 mb-12 animate-fade-up delay-200" style={{ opacity: 0 }}>
-              <button onClick={onBookingClick} className="btn btn-primary" style={{ padding: '16px 32px' }}>
+              <button onClick={onBookingClick} className="btn btn-primary" style={{ padding: '16px 32px', textDecoration: 'none' }}>
                 Mulai Rental
               </button>
-              <a href="#games" className="btn btn-outline flex items-center gap-2">
+              <a href="#games" className="btn btn-outline flex items-center gap-2" style={{ textDecoration: 'none' }}>
                 <Play size={18} /> Lihat Game
               </a>
             </div>
 
-            <div className="flex gap-8 animate-fade-up delay-300" style={{ borderTop: '1px solid var(--border)', paddingTop: '2rem', opacity: 0 }}>
+            <div className="flex gap-8 animate-fade-up delay-300" style={{ paddingTop: '1rem', opacity: 0 }}>
               <div>
                 <h4 style={{ fontSize: '1.5rem' }}>50+</h4>
                 <p className="text-muted" style={{ fontSize: '0.875rem' }}>Games</p>
